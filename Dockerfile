@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 public.ecr.aws/e1h7x4a2/plow-cloud-agents:base-cd2a898d673812621bae6764560e455807e9818e@sha256:bfd4980f361a551e62569f8c2eb717c1076d0b8be3a0499b869eaece151336a4
+FROM --platform=linux/amd64 public.ecr.aws/e1h7x4a2/plow-cloud-agents:base-51f83158a70a383f03a4d03dbd8b6ea102cf0361@sha256:253d7ed3409effa7fa59113d93b4b79bb731d8264cdaf4cd60294924d0110a2e
 
 # Agent Identity and Personality
 COPY runtime/SOUL.md /var/lib/hermes/SOUL.md
