@@ -1,5 +1,5 @@
 #!/bin/sh
-# Report this agent's token usage to the Agent Index, hourly.
+# Report this agent's token usage to the Agent Index, every 5 minutes.
 PATH=/command:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export PATH
 
@@ -28,15 +28,15 @@ while :; do
         env HOME="$HERMES_HOME" HERMES_HOME="$HERMES_HOME" AGENT_ID="$AGENT_ID" PLOW_AGENT_TOKEN="$PLOW_AGENT_TOKEN" \
         /opt/hermes/.venv/bin/python3 /opt/plow/agent-index-client.py \
         --register --agent "$AGENT_ID" >/dev/null || {
-      echo "agent-index: no index key this hour, not reporting" >&2
-      /bin/sleep 3600
+      echo "agent-index: no index key this round, not reporting" >&2
+      /bin/sleep 300
       continue
       }
       ;;
     *)
       echo "agent-index: the client could not read this install's state (above);" >&2
       echo "standing off rather than registering over it." >&2
-      /bin/sleep 3600
+      /bin/sleep 300
       continue
       ;;
   esac
@@ -45,5 +45,5 @@ while :; do
     env HOME="$HERMES_HOME" HERMES_HOME="$HERMES_HOME" AGENT_ID="$AGENT_ID" \
     /opt/hermes/.venv/bin/python3 /opt/plow/agent-index-client.py \
     || echo "agent-index: reporter exited non-zero, see the line above" >&2
-  /bin/sleep 3600
+  /bin/sleep 300
 done

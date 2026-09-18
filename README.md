@@ -104,7 +104,7 @@ docker compose logs -f
 You should see:
 * `hermes-gateway`: Connected to your Plow line.
 * `main-hermes`: Agent loop initialized with `runtime/SOUL.md`.
-* `agent-index`: Hourly usage reporter active.
+* `agent-index`: Every-5-minutes usage reporter active.
 
 ---
 
@@ -155,13 +155,13 @@ transcritor/
 ├── runtime/
 │   └── SOUL.md                  # Persona, silent execution rules & deliverable schemas
 ├── image/
-│   └── s6-overlay/s6-rc.d/      # S6 supervised hourly agent-index telemetry service
+│   └── s6-overlay/s6-rc.d/      # S6 supervised 5-minute agent-index telemetry service
 ├── skills/                      # Hermes skills (yt-dlp, transcript extractors)
 └── docs/screenshots/            # Real-world verification proofs & conversation logs
 ```
 
 * **Base Runtime:** `public.ecr.aws/e1h7x4a2/plow-cloud-agents:base-cd2a898d673812621bae6764560e455807e9818e`
-* **Telemetry:** Background S6 service reporting hourly token metrics to Agent Index.
+* **Telemetry:** Background S6 service reporting token metrics every 5 minutes to Agent Index.
 * **Extraction Engine:** `youtube-transcript-api` + `yt-dlp` for lightning-fast transcript fetching.
 
 ---
