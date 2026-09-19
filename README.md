@@ -104,7 +104,7 @@ docker compose logs -f
 You should see:
 * `hermes-gateway`: Connected to your Plow line.
 * `main-hermes`: Agent loop initialized with `runtime/SOUL.md`.
-* `agent-index`: Every-5-minutes usage reporter active.
+* `agent-index`: Every-5-minutes usage reporter active (ships with the Plow base image).
 
 ---
 
@@ -154,8 +154,6 @@ transcritor/
 │   └── plow-agents              # Plow agent management CLI (login, mint, profile)
 ├── runtime/
 │   └── SOUL.md                  # Persona, silent execution rules & deliverable schemas
-├── image/
-│   └── s6-overlay/s6-rc.d/      # S6 supervised 5-minute agent-index telemetry service
 ├── skills/                      # Hermes skills (yt-dlp, transcript extractors)
 └── docs/screenshots/            # Real-world verification proofs & conversation logs
 ```
